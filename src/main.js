@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 
 Vue.config.productionTip = false
-
+console.log(123)
 new Vue({
   router,
   store,
