@@ -1,3 +1,13 @@
-> 1%
-last 2 versions
-not dead
+# 这个文件 配置兼容到浏览器的哪个版本
+
+# 兼容到超过 1%的用户使用的浏览器
+#> 1%
+
+# 兼容到最后两个版本
+#last 2 versions
+#not dead
+
+# 当前项目  兼容到 Android 4.0以上版本      iOS 7 以上版本
+Android >= 4.0
+iOS >= 7
+
