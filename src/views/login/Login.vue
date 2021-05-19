@@ -133,7 +133,7 @@ export default {
       // 业务逻辑执行完毕 无论成功 还是失败 取消按钮禁言
       this.isDisabled = false
     },
-    // 登录按钮 表单验证成功
+    // 登录按钮 表单验证成功, vuex中存放 token(vuex做了数据持久化)
     async handleLogin() {
       /**
        * 1. 接口文档找到登录接口
@@ -150,8 +150,10 @@ export default {
       })
       //
       try {
-        await login(this.user)
+        const { data } = await login(this.user)
         this.$toast.success('登录成功') // 登录成功 或者失败 loading 自动关闭
+        // vuex 存放 token
+        this.$store.commit('setUser', data)
       } catch (err) {
         this.$toast.fail('登录失败,用户名或密码错误')
       }
