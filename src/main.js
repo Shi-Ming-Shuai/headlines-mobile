@@ -9,10 +9,11 @@ import 'amfe-flexible'
 import '@/assets/css/global.less'
 
 // Vant 组件库
-import { Button, Icon, Tabbar, TabbarItem, NavBar, Field, Toast, Form, CountDown } from 'vant'
+import { Button, Icon, Tabbar, TabbarItem, NavBar, Field, Toast, Form, CountDown, Cell, CellGroup, Image as VanImage, Grid, GridItem } from 'vant'
 Vue.use(Button).use(Icon).use(Tabbar)
   .use(TabbarItem).use(NavBar).use(Field).use(Toast).use(Form)
-  .use(CountDown)
+  .use(CountDown).use(Cell).use(CellGroup).use(VanImage)
+  .use(Grid).use(GridItem)
 Vue.config.productionTip = false
 
 new Vue({
