@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+// 获取用户token  用户 请求拦截器 添加 Authorization 字段
+import { getToken } from '@/utils/getToken'
+
 // 导出自己封装的方法
 export function request(config) {
   // 创建axios实例
@@ -10,6 +13,12 @@ export function request(config) {
   // axios拦截器
   // 1.请求拦截
   instance.interceptors.request.use(config => {
+    // 判断token是否存在 如果存在 携带在请求头 Authorization
+    if (getToken()) {
+      config.headers.Authorization = `Bearer ${getToken()}`
+    } else {
+      console.log('token不存在,请求头没有添加 Authorization 字段')
+    }
     return config
   }, error => {
     console.log('错误' + error)
