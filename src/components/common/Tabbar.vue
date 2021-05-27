@@ -4,10 +4,10 @@
     <router-view></router-view>
     <!-- 底部标签栏 route 标签栏支持路由模式 是否开启底部安全区适配，设置 fixed 时默认开启 -->
     <van-tabbar
-      v-model="active"
+      v-model="activeIndex"
       route
-      inactive-color="#24292f"
-      active-color="#ff4e52"
+      active-color="#3597fa"
+      inactive-color="#717171"
       safe-area-inset-bottom
     >
       <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
@@ -23,19 +23,10 @@ export default {
   name: 'Tabbar',
   data() {
     return {
-      active: 0
+      activeIndex: 0
     }
   },
-  components: {},
-  watch: {
-    active: {
-      handler(val, oldVal) {
-        console.log(`新的:${val}---旧的:${oldVal}`)
-      },
-      // 设置这个属性 表示立即执行 active 的handeler(没变化也执行)
-      immediate: true
-    }
-  }
+  components: {}
 }
 </script>
 

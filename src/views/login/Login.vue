@@ -154,6 +154,8 @@ export default {
         this.$toast.success('登录成功') // 登录成功 或者失败 loading 自动关闭
         // vuex 存放 token
         this.$store.commit('setUser', data)
+        // 返回跳转来的页面
+        this.$router.back()
       } catch (err) {
         this.$toast.fail('登录失败,用户名或密码错误')
       }

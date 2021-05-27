@@ -6,10 +6,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: null // 存放用户信息 token...
+    user: {} // 存放用户信息 token...
   },
   mutations: {
-    // 修改user信息
+    // 修改user信息  登录、退出登录
     setUser(state, data) {
       state.user = data
     }

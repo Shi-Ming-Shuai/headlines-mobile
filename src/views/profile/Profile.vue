@@ -1,9 +1,9 @@
 <template>
   <!-- 我的 个人中心页 -->
   <div class="profile">
-    <!-- 头部信息 -->
-    <van-cell-group class="user-info">
-      <!-- 头部用户基本信息 -->
+    <!--已登录状态下展示   头部信息 -->
+    <van-cell-group v-if="user" class="user-info">
+      <!--头部用户基本信息 -->
       <van-cell :border="false" class="base-info" center>
         <template #icon>
           <van-image
@@ -48,6 +48,18 @@
         </van-grid-item>
       </van-grid>
     </van-cell-group>
+    <!-- 未登录状态下展示  头部信息 点击手机图片 跳转到登录-->
+    <div v-else class="no-login">
+      <img
+        class="phone"
+        @click="$router.push('/login')"
+        src="~@/assets/image/profily-phone.png"
+        alt=""
+      />
+      <div class="login" @click="$router.push('/login')">
+        登录&nbsp;/&nbsp;注册
+      </div>
+    </div>
     <!-- 收藏-历史 -->
     <van-grid column-num="2" class="nav-grid">
       <van-grid-item
@@ -69,25 +81,93 @@
       <van-cell title="小智同学" is-link to="/"></van-cell>
     </van-cell-group>
     <!-- 退出登录(登录才显示) -->
-    <van-button class="log-out" block
+    <van-button v-if="user" class="log-out" block @click="loginOut"
       >退出登录</van-button
     >
   </div>
 </template>
 
 <script>
+// 使用mapState 助手 获取 vuex中的state
+import { mapState } from 'vuex'
+
+// 网络请求
+import { getUserInfo } from '@/network/user'
+
 export default {
   name: 'Profile',
   data() {
-    return {}
+    return {
+      userInfo: null
+    }
   },
-  components: {}
+  created() {
+    // 获取当前用户信息
+    this.getCurrentUserInfo()
+  },
+  components: {},
+  computed: {
+    // 使用拓展运算符导入state
+    ...mapState(['user'])
+  },
+  methods: {
+    // 退出登录    vuex 中的 user 设为 null
+    loginOut() {
+      // 提示弹窗
+      this.$dialog
+        .confirm({
+          title: '确定退出吗',
+          message: '弹窗内容'
+        })
+        .then(() => {
+          // 确定   veux 中 user 设为 null
+          this.$store.commit('setUser', null)
+        })
+        .catch((e) => {
+          // 取消
+        })
+      // 用户确认 退出
+      // 用户取消
+    },
+    // 获取当前用户信息
+    async getCurrentUserInfo() {
+      // const res = await getUserInfo()
+      // console.log(res)
+
+      try {
+        const res = await getUserInfo()
+        console.log(res)
+      } catch (e) {
+        const res = '服务器错误'
+        console.log(res)
+      }
+    }
+  }
 }
 </script>
 
 <style lang='less' scoped>
 .profile {
   background-color: #f5f7f9;
+}
+// 未登录状态 头部信息
+.no-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  background: url('~@/assets/image/profily-banner_bg.png') no-repeat;
+  background-size: cover;
+  .phone {
+    width: 66px;
+    height: 66px;
+  }
+  .login {
+    margin-top: 7px;
+    font-size: 14px;
+    color: #fff;
+  }
 }
 // 头部用户信息
 .user-info {

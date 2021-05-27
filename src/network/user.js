@@ -17,3 +17,11 @@ export const SenCode = (mobile) => {
     url: `/app/v1_0/sms/codes/${mobile}`
   })
 }
+
+//  获取当前已登录的 用户信息 头像 关注、粉丝...
+// headers Authorization(必传) axios 请求拦截处理了
+export const getUserInfo = () => {
+  return request({
+    url: '/app/v1_0/user'
+  })
+}
