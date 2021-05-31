@@ -133,7 +133,7 @@ export default {
     async getCurrentUserInfo() {
       // const res = await getUserInfo()
       // console.log(res)
-
+      console.log('服务器错误 有时间处理一下')
       try {
         const res = await getUserInfo()
         console.log(res)
