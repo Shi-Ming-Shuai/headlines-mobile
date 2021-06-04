@@ -18,7 +18,6 @@ dayjs.locale('zh-cn')
 
 // 处理相对时间
 Vue.filter('relativeTime', value => {
-  console.log(value)
   // to 到的时间 相对于现在 是什么时候
   return dayjs().to(dayjs(value))
 })
