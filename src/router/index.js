@@ -4,8 +4,9 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-  // 登录注册
+  // 登录注册   搜索页面
   { path: '/login', name: 'login', component: () => import('@/views/login/Login') },
+  { path: '/search', name: 'search', component: () => import('@/views/search/Search') },
   // 主要路由 标签栏
   {
     path: '/',

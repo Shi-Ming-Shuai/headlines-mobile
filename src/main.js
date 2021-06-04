@@ -12,12 +12,12 @@ import '@/assets/css/global.less'
 import '@/utils/dayjs'
 
 // Vant 组件库
-import { Button, Lazyload, PullRefresh, List, Tab, Tabs, Dialog, Icon, Tabbar, TabbarItem, NavBar, Field, Toast, Form, CountDown, Cell, CellGroup, Image as VanImage, Grid, GridItem } from 'vant'
+import { Popup, Search, Button, Lazyload, PullRefresh, List, Tab, Tabs, Dialog, Icon, Tabbar, TabbarItem, NavBar, Field, Toast, Form, CountDown, Cell, CellGroup, Image as VanImage, Grid, GridItem } from 'vant'
 Vue.use(Button).use(Icon).use(Tabbar).use(PullRefresh).use(Lazyload)
   .use(TabbarItem).use(NavBar).use(Field).use(Toast).use(Form)
   .use(CountDown).use(Cell).use(CellGroup).use(VanImage)
   .use(Grid).use(GridItem).use(Dialog).use(Tab).use(Tabs)
-  .use(List)
+  .use(List).use(Popup).use(Search)
 
 Vue.config.productionTip = false
 

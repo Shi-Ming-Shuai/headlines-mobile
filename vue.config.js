@@ -5,12 +5,14 @@ module.exports = {
     // 开发环境 代理
     proxy: {
       '/app': {
-        target: 'http:// ttapi.research.itcast.cn'
+        // target: 'https://toutiao.m.lipengzhou.com'
+        target: 'http://ttapi.research.itcast.cn'
         // changeOrigin: true, // 不写默认为 true 更改 host 为 target(跨ip)
         // pathRewrite: { // 路径重写
         //   '^/app': ''
         // }
       }
     }
+    // productionSourceMap: false
   }
 }

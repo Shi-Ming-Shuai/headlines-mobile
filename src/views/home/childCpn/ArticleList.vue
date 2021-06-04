@@ -102,14 +102,4 @@ export default {
 </script>
 
 <style lang='less' scoped>
-// /deep/ .van-list {
-//   width: 375px;
-//   height: 880px;
-//   position: fixed;
-//   left: 0;
-//   right: 0;
-//   top: 90px;
-//   bottom: 50px;
-//   z-index: 99999999;
-// }
 </style>

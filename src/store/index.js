@@ -6,12 +6,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: {} // 存放用户信息 token...
+    user: null, // 存放用户信息 token...
+    userChannelsList: [] // 如果用户未登录 频道列表则存放至本地
   },
   mutations: {
     // 修改user信息  登录、退出登录
     setUser(state, data) {
       state.user = data
+    },
+    // 修改频道列表信息
+    setChannleList(state, payload) {
+      console.log(payload)
+      state.userChannelsList = payload
     }
   },
   actions: {
