@@ -18,7 +18,9 @@
         <template #title>
           <span class="name">用户名称</span>
         </template>
-        <van-button class="edit" round size="small">编辑资料</van-button>
+        <van-button class="edit" round size="small" to="/editUserInfo"
+          >编辑资料</van-button
+        >
       </van-cell>
       <!-- 用户关注-粉丝-获赞-头条(发表的帖子) -->
       <van-grid :border="false" class="data-info">
@@ -123,7 +125,7 @@ export default {
           // 确定   veux 中 user 设为 null
           this.$store.commit('setUser', null)
         })
-        .catch((e) => {
+        .catch(e => {
           // 取消
         })
       // 用户确认 退出
@@ -146,7 +148,7 @@ export default {
 }
 </script>
 
-<style lang='less' scoped>
+<style lang="less" scoped>
 .profile {
   background-color: #f5f7f9;
 }

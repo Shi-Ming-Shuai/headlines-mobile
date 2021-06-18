@@ -74,7 +74,6 @@ export default {
     // 请求频道列表
     this.getChannels()
   },
-
   methods: {
     // 业务逻辑
     // 子组件触发   编辑频道(触发 tab跳转指定频道  关闭弹出层)
@@ -109,7 +108,6 @@ export default {
           res = data.channels
         }
       }
-      console.log(res)
       // 更新 频道列表 channels
       this.channels = res
     }

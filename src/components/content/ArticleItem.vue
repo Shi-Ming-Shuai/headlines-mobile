@@ -3,7 +3,15 @@
   <div>
     <!-- 分为三种情况 文章没有图片 一张图片 三张图片(展示效果不一样)-->
     <van-cell-group>
-      <van-cell class="article-item">
+      <van-cell
+        :to="{
+          name: 'article',
+          query: {
+            acticleId: listItem.art_id
+          }
+        }"
+        class="article-item"
+      >
         <!-- 没图  情况-->
         <template #title>
           <div class="title van-multi-ellipsis--l2">

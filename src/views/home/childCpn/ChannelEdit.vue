@@ -82,8 +82,8 @@ export default {
     recommendChannels() {
       let recList = []
       // 全部频道过滤出 我的频道中 不存在的频道
-      recList = this.allchannels.filter((allItem) => {
-        return !this.userchannels.find((item) => {
+      recList = this.allchannels.filter(allItem => {
+        return !this.userchannels.find(item => {
           return item.id === allItem.id
         })
       })
@@ -137,8 +137,6 @@ export default {
     },
     // 点击推荐列表项 添加至我的列表(要做数据持久化)
     async addChannel(item) {
-      console.log(item)
-
       this.userchannels.push(item)
       // 如果用户登录 频道列表更新到后台
       if (this.$store.state.user) {
@@ -166,7 +164,7 @@ export default {
 }
 </script>
 
-<style lang='less' scoped>
+<style lang="less" scoped>
 .channel-edit {
   padding: 40px 10px;
   .van-cell {

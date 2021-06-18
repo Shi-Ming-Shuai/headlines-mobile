@@ -21,3 +21,8 @@ Vue.filter('relativeTime', value => {
   // to 到的时间 相对于现在 是什么时候
   return dayjs().to(dayjs(value))
 })
+
+// 处理展示时间格式
+Vue.filter('handleTimeFormat', (value, format = 'YYYY-MM-DD HH:mm') => {
+  return dayjs(value).format(format)
+})

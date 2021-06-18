@@ -16,7 +16,7 @@
         @load="onLoad"
       >
         <!-- 列表项 通用组件 -->
-        <ArticleItem v-for="item in list" :key="item.art_id" :listItem="item" />
+        <ArticleItem v-for="(item, i) in list" :key="i" :listItem="item" />
       </van-list>
     </van-pull-refresh>
   </div>
@@ -47,13 +47,6 @@ export default {
     }
   },
   components: { ArticleItem },
-  mounted() {
-    console.log('切换tab 滚动高度问题')
-    // console.dir(this.$refs.articleList.$el)
-    // this.$refs.articleList.$el.scrollTo(0, 0)
-    // console.log(this.$refs.articleList.$el.scrollHeight)
-  },
-
   methods: {
     // 下拉刷新
     async onRefresh() {
