@@ -1,5 +1,5 @@
 <template>
-  <div class="article-list">
+  <div class="article-list" ref="article-list">
     <!-- 下拉刷新 -->
     <van-pull-refresh
       v-model="isRefreshLoading"
@@ -27,6 +27,9 @@
 import { getArticleList } from '@/network/article'
 // 组件
 import ArticleItem from '@/components/content/ArticleItem'
+// lodash 中的防抖
+import { debounce } from 'lodash'
+
 export default {
   name: 'ArticleList',
   data() {
@@ -36,7 +39,8 @@ export default {
       finished: false,
       pre_timestamp: 0, // 预加载时间戳(用于请求下一页数据)
       isRefreshLoading: false, // 下拉刷新加载 为true展示(下拉 自动变为true)
-      refreshSuccessText: '' // 下拉加载提示文字
+      refreshSuccessText: '', // 下拉加载提示文字
+      cacheScrollTop: 0 // 记录当前滚动的位置(用于页面缓存 进入的时候滚动到离开时的位置)
     }
   },
   props: {
@@ -47,6 +51,19 @@ export default {
     }
   },
   components: { ArticleItem },
+  mounted() {
+    // 监听滚动事件  记录离开时的滚动位置(再次进入直接修改到离开时的距离顶部的位置)
+    this.$refs['article-list'].onscroll = debounce(() => {
+      this.cacheScrollTop = this.$refs['article-list'].scrollTop
+    }, 50)
+  },
+  // keep-alive 生命周期
+  // 活跃状态(解决缓存带来的滚动位置不一致问题)  / 不活跃状态
+  activated() {
+    // 滚动到离开时的位置
+    this.$refs['article-list'].scrollTop = this.cacheScrollTop
+  },
+  deactivated() {},
   methods: {
     // 下拉刷新
     async onRefresh() {
@@ -94,5 +111,4 @@ export default {
 }
 </script>
 
-<style lang='less' scoped>
-</style>
+<style lang="less" scoped></style>

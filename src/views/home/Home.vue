@@ -115,7 +115,7 @@ export default {
 }
 </script>
 
-<style lang='less' scoped>
+<style lang="less" scoped>
 /deep/ .nav-bar {
   .van-button {
     width: 228px;

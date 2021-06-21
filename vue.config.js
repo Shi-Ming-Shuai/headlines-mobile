@@ -12,7 +12,18 @@ module.exports = {
         //   '^/app': ''
         // }
       }
+      // ,
+      // '/socket.io': {
+      //   // 配置跨域 socket io
+      //   target: 'http://ttapi.research.itcast.cn', // target host
+      //   changeOrigin: true, // needed for virtual hosted sites
+      //   logLevel: 'debug'
+      // },
+      // 'sockjs-node': {
+      //   target: 'http://ttapi.research.itcast.cn',
+      //   ws: false,
+      //   changeOrigin: true
+      // },
     }
-    // productionSourceMap: false
   }
 }

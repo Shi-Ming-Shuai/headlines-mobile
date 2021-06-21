@@ -1,7 +1,10 @@
 <template>
   <div>
-    <!-- 二级路由出口 -->
-    <router-view></router-view>
+    <!-- 二级路由出口 如果一级路由不被缓存 那么 二级路由也不被缓存  -->
+    <keep-alive v-if="$store.state.cacheRouter.length !== 0">
+      <router-view></router-view>
+    </keep-alive>
+    <router-view v-else></router-view>
     <!-- 底部标签栏 route 标签栏支持路由模式 是否开启底部安全区适配，设置 fixed 时默认开启 -->
     <van-tabbar
       v-model="activeIndex"
@@ -26,9 +29,12 @@ export default {
       activeIndex: 0
     }
   },
-  components: {}
+  components: {},
+  created() {
+    // 实例一被创建   就将这个页面添加至缓存的路由列表中 vuex
+    this.$store.commit('addCacheRouter', 'Tabbar')
+  }
 }
 </script>
 
-<style lang='less' scoped>
-</style>
+<style lang="less" scoped></style>

@@ -54,7 +54,14 @@
     <div v-else class="no-login">
       <img
         class="phone"
-        @click="$router.push('/login')"
+        @click="
+          $router.push({
+            path: '/login',
+            query: {
+              redirectRoute: $route.fullPath
+            }
+          })
+        "
         src="~@/assets/image/profily-phone.png"
         alt=""
       />
@@ -80,7 +87,7 @@
     <!-- 消息通知-小智同学- -->
     <van-cell-group :border="false" class="tool-nav">
       <van-cell title="消息通知" is-link to="/"></van-cell>
-      <van-cell title="小智同学" is-link to="/"></van-cell>
+      <van-cell title="小智同学" is-link :to="{ name: 'ChatIm' }"></van-cell>
     </van-cell-group>
     <!-- 退出登录(登录才显示) -->
     <van-button v-if="user" class="log-out" block @click="loginOut"
@@ -94,7 +101,7 @@
 import { mapState } from 'vuex'
 
 // 网络请求
-import { getUserInfo } from '@/network/user'
+// import { getUserInfo } from '@/network/user'
 
 export default {
   name: 'Profile',
@@ -135,10 +142,9 @@ export default {
     async getCurrentUserInfo() {
       // const res = await getUserInfo()
       // console.log(res)
-      console.log('服务器错误 有时间处理一下')
       try {
-        const res = await getUserInfo()
-        console.log(res)
+        // const res = await getUserInfo()
+        // console.log(res)
       } catch (e) {
         const res = '服务器错误'
         console.log(res)

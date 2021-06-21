@@ -98,6 +98,10 @@ export default {
     }
   },
   components: {},
+  created() {
+    // 只要进入登录页面  一级路由缓存全部清空
+    this.$store.commit('setCacheRouters', [])
+  },
   // 业务逻辑
   methods: {
     // 发送验证码  验证手机规则 通过:请求验证码接口 不通过:提示用户 toast
@@ -154,9 +158,10 @@ export default {
         this.$toast.success('登录成功') // 登录成功 或者失败 loading 自动关闭
         // vuex 存放 token
         this.$store.commit('setUser', data)
-        // 返回跳转来的页面
-        this.$router.back()
+        // 返回跳转来的页面 如果没有 就跳转到首页
+        this.$router.replace(this.$route.query.redirectRoute || '/')
       } catch (err) {
+        // 如果axios 响应拦截器设置了 错误拦截 那么这里的err捕获到的是 try里的错误 永远不会捕获到错误日志
         this.$toast.fail('登录失败,用户名或密码错误')
       }
     },
@@ -175,7 +180,7 @@ export default {
 }
 </script>
 
-<style lang='less' scoped>
+<style lang="less" scoped>
 // 深度选择器 父组件修改子组件 如果通过这个修改不了可是使用 /deep/
 /deep/ .van-field__button {
   border-left: 1px solid #eeeeee;

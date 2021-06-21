@@ -116,7 +116,13 @@ export function request(config) {
   // 把实例传递出去
   return instance(config)
 }
-// 跳转至登录页
+// 跳转至登录页  记录从哪个页面来的
 function toLogin() {
-  router.push('/login')
+  // 使用router.currentRoute获取当前路由信息 原因： request.js 无法使用 this.$route
+  router.replace({
+    path: '/login',
+    query: {
+      redirectRoute: router.currentRoute.fullPath
+    }
+  })
 }
