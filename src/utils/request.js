@@ -110,6 +110,8 @@ export function request(config) {
         Toast('服务器内部错误')
         break
     }
+    // 将错误信息传递下去  （却保 try catch 能捕获到 错误的响应）
+    return Promise.reject(error)
   }
   )
 
