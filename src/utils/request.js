@@ -60,9 +60,11 @@ export function request(config) {
     return resolve.data
   }, async error => {
     // 注意 响应拦截了 error 则代码中 try catch 就没法有效的拦截错误
+    // 解决:  需要在末尾添加     return Promise.reject(error)
+
     // error.config 是 失败的请求对象(重新发一次请求)
     // 重新发一次请求 request(error.config)
-    // 根据状态法做不同的处理
+    // 根据状态法做不同的处理    处理公共的错误状态码 (公共!!!  其他的单独再组件中处理)
     let statusCode = null
     if (error && error.response) {
       statusCode = error.response.status
