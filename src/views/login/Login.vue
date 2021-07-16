@@ -161,6 +161,7 @@ export default {
         // 返回跳转来的页面 如果没有 就跳转到首页
         this.$router.replace(this.$route.query.redirectRoute || '/')
       } catch (err) {
+        console.log(err)
         // 如果axios 响应拦截器设置了 错误拦截 那么这里的err捕获到的是 try里的错误 永远不会捕获到错误日志
         this.$toast.fail('登录失败,用户名或密码错误')
       }
