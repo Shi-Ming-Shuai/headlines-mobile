@@ -5,10 +5,7 @@
       <template #title>
         <van-button to="/search" round icon="search">搜索</van-button>
       </template>
-      3
     </van-nav-bar>
-123
-231
     <!--频道列表 tab 导航标签 -->
     <van-tabs
       swipe-threshold="2"
