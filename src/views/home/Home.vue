@@ -6,7 +6,7 @@
         <van-button to="/search" round icon="search">搜索</van-button>
       </template>
     </van-nav-bar>
-
+123
     <!--频道列表 tab 导航标签 -->
     <van-tabs
       swipe-threshold="2"
@@ -73,6 +73,7 @@ export default {
   created() {
     // 请求频道列表
     this.getChannels()
+    console.log(1)
   },
   methods: {
     // 业务逻辑

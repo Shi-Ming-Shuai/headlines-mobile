@@ -1,4 +1,9 @@
 module.exports = {
+  // 配置sourceMap
+  // configureWebpack: (config) => {
+  //   //调试JS
+  //   config.devtool = "eval-source-map"
+  // },
   devServer: {
     // 内网穿透时 不报错
     disableHostCheck: true,
