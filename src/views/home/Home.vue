@@ -8,7 +8,7 @@
       3
     </van-nav-bar>
 123
-21
+231
     <!--频道列表 tab 导航标签 -->
     <van-tabs
       swipe-threshold="2"
